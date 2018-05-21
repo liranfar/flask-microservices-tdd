@@ -7,6 +7,8 @@ services:
     build:
       context: ./services/users
       dockerfile: Dockerfile-dev
+    volumes:
+      - './services/users:/usr/src/app'
     ports:
       - 5001:5000
     environment:
