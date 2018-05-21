@@ -1,5 +1,7 @@
 sudo: required
 
+language: python
+
 services:
   - docker
 
@@ -21,3 +23,8 @@ script:
 
 after_script:
   - docker-compose -f docker-compose-dev.yml down
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always
