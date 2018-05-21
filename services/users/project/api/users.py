@@ -16,10 +16,11 @@ def ping_pong():
         'message': 'pong!'
     })
 
+
 @users_blueprint.route('/users', methods=['GET'])
 def get_all_users():
     """Get all users"""
-    response_object =  jsonify({
+    response_object = jsonify({
         'status': 'fail',
         'message': 'could not apply the requested operation!'
     })
@@ -32,9 +33,8 @@ def get_all_users():
                 }
             }
         return jsonify(response_object), 200
-    except:
+    except Exception:
         return jsonify(response_object), 400
-
 
 
 @users_blueprint.route('/users', methods=['POST'])
@@ -62,6 +62,7 @@ def add_user():
     except exc.IntegrityError as e:
         db.session.rollback()
         return jsonify(response_object), 400
+
 
 @users_blueprint.route('/users/<user_id>', methods=['GET'])
 def get_single_user(user_id):
