@@ -18,8 +18,9 @@ before_script:
   - docker-compose -f docker-compose-dev.yml up --build -d
 
 script:
-  - docker-compose -f docker-compose-dev.yml run users python manage.py test
   - docker-compose -f docker-compose-dev.yml run users python manage.py cov
+  #- docker-compose -f docker-compose-dev.yml run users python manage.py test
+
 
 after_script:
   - docker-compose -f docker-compose-dev.yml down
