@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# ENV
+export REACT_APP_USERS_SERVICE_URL=http://127.0.0.1
+
 # build the containers
 docker-compose -f ../docker-compose-dev.yml build
 
@@ -27,3 +30,7 @@ docker-compose -f ../docker-compose-dev.yml \
 
 # stop all containers
 docker-compose -f ../docker-compose-dev.yml stop
+
+# run client side tests
+docker-compose -f docker-compose-dev.yml \
+  run client npm test
